@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>একটি বার্তা ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #ffe4e6, #fbcfe8, #f472b6);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #881337;
+    }
+
+    .mini-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 360px;
+      border-radius: 26px;
+      padding: 34px 22px;
+      box-shadow: 0 16px 35px rgba(244, 63, 94, 0.2);
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon {
+      font-size: 50px;
+      display: inline-block;
+      margin-bottom: 12px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .day-count {
+      font-size: 36px;
+      font-weight: 700;
+      color: #e11d48;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .sub-text {
+      font-size: 16.5px;
+      color: #4c0519;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #f43f5e, #e11d48);
+      color: #fff;
+      border: none;
+      padding: 14px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(225, 29, 72, 0.35);
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      width: 100%;
+      transition: transform 0.2s;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen 1: Normal card jate bujhte na pare -->
+  <div class="mini-card" id="screen1">
+    <div class="icon">📩</div>
+    <div class="day-count" style="font-size: 26px; color: #be123c;">একটি বিশেষ বার্তা</div>
+    <p class="sub-text">তোমার জন্য এখানে কিছু একটা অপেক্ষা করছে...</p>
+    <button class="btn" onclick="openSurprise()">খুলে দেখো ✨</button>
+  </div>
+
+  <!-- Screen 2: 7 diner countdown card -->
+  <div class="mini-card hidden" id="screen2">
+    <div class="icon">⏳✨</div>
+    <div class="day-count">আর মাত্র ৭ দিন!</div>
+    <p class="sub-text">মিষ্টুর জন্মদিনের কাউন্টডাউন শুরু... ❤️</p>
+    
+    <button class="btn" onclick="blastLove()">I LOVE YOU MISTU ❤️</button>
+  </div>
+
+  <script>
+    function openSurprise() {
+      document.getElementById('screen1').classList.add('hidden');
+      document.getElementById('screen2').classList.remove('hidden');
+      blastLove();
+    }
+
+    function blastLove() {
+      confetti({
+        particleCount: 70,
+        spread: 65,
+        origin: { y: 0.65 },
+        colors: ['#ff4d6d', '#ff758f', '#ffb3c1', '#f72585', '#ffd166']
+      });
+    }
+  </script>
+</body>
+</html>
